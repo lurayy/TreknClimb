@@ -1,0 +1,185 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">Trek And Climb Adventure</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="/packages/trek">Treking</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="/packages/climbing">Peak Climbling</a>
+                </li>  
+                <li class="nav-item">
+                  <a class="nav-link" href="/packages/tour">Tour</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/packages/safari">Jungle Safari</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/packages/rafting">River Rafting</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/packages/sports">Adventure Sports</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+      <header class="masthead text-center text-white d-flex">
+        <div class="container my-auto">
+          <div class="row">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-4">
+              <h2 class="text-uppercase">
+                <strong>Experience Nepal</strong>
+              </h2>
+              <hr>
+            </div>
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-4">
+              <p class="text-faded mb-5">Open skies and high himalayas are waiting for you</p>
+              <a class="btn btn-primary btn-l js-scroll-trigger" href="#register">Go Now</a>
+            </div>
+          </div>
+      </div>
+      </header>
+
+       <section class="p-10" id="portfolio">
+        <div class="container p-0">
+          <div class="row no-gutters popup-gallery" >
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/8.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/8.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    <div class="project-name">
+                      Trekking
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/2.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/2.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    <div class="project-name">
+                      Peak Climbing
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/3.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/3.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    
+                    <div class="project-name">
+                      Tour
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/4.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/4.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    
+                    <div class="project-name">
+                      Jungle Safari
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/5.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/5.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    
+                    <div class="project-name">
+                      River Rafting
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <a class="portfolio-box" href="{% static 'img/portfolio/fullsize/6.jpg' %}">
+                <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/6.jpg' %}" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    
+                    <div class="project-name">
+                      Adventure Sports
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+     <section class="bg-primary" id="register">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+              <h2 class="section-heading text-white"><strong>Register Your Trip Now!</strong></h2>
+              <hr class="light my-4">
+              <p class="text-faded mb-4">Your journey to Heaven starts here</p>
+              <a class="btn btn-light btn-xl js-scroll-trigger" href="/packages" target="blank">Register</a> 
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section id="about">
+        <div>
+          <div class="row">
+            <div class="col-lg-3 mx-auto text-left">
+              <h2 class="section-heading">Let's Get In Touch!</h2>
+              <hr align="left">
+              <p class="mb-5">For more information and help, please contact us on the following details:<br><br>
+                  <strong>P.O. Box :</strong> 443. Somewhere, Pokhara-99, Nepal<br>
+                  <strong>Tel :</strong> 061-521358, 54846, 9898412358<br>
+                  <strong>Fax :</strong>061- 532636<br>
+                  <strong>E-mail :</strong> info@treknclimb.com.np<br>
+                  trekwithme@gmail.com</p>
+            </div>
+           <div class="col-lg-6">
+               <div class="mapouter">
+                  <div class="gmap_canvas"><iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=mount%20annapurna%20campus&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de/webdesign-hannover/"></a></div>
+                  <style>.mapouter{text-align:right;height:400px;width:500px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:500px;}</style>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <div class="bg-dark">
+          <div class="row">
+              <span class="mb-5">For more information and help, please contact us on the following details:<br><br>
+                  <strong>P.O. Box :</strong> 443. Somewhere, Pokhara-15, Nepal<br></span>
+          </div>        
+        </div>
+{% endblock %}  
