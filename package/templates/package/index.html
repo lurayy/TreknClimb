@@ -1,5 +1,17 @@
 {% extends "main/header.html" %}
 
 {% block content %}
+<div class="container float-right">
+    {% for trip_detail in data %}
+        <h2 class="Jumbotron"><strong><u>Trip Title : {{trip_detail.title}}</u></strong></h2>
+        <div class="container alert alert-dark ">
+        <u>Strating Point : </u> {{ trip_detail.starting_point }} <br>
+        <u>End Point : </u> {{ trip_detail.ending_point }} <br>
+        <u>Price : </u> {{ trip_detail.price }} <br>
+        <u>Details : </u> {{ trip_detail.details }} <br>
+    </div>
+        <hr>
+    {% endfor %}
 
+</div>
 {% endblock %}
