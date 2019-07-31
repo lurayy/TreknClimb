@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'travel_buddy',
     'package',
     'main',
     'django.contrib.admin',

@@ -20,4 +20,5 @@ urlpatterns = [
     path('',include('main.urls')),
     path('package/',include('package.urls')),
     path('admin/', admin.site.urls),
+    path('travel/',include('travel_buddy.urls'))
 ]
