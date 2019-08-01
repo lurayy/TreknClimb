@@ -8,44 +8,45 @@
             <div class="jumbotron text-white" style="background-color: #16a085; padding-left: 0px;">
                     <h1 class="display-4">Allies</strong>!</h1>
                     <p class="lead">You have sucessfully logged in, now you can find mates to have a trip together.</p>
-                </div>
+
+                <h5 style="text-align: right"><a href="/travel/logout" class="text-white">Log out </a>&nbsp;&nbsp;  <a href="/travel/travel" class="text-white">Home</a></h5>
+            </div>
                 </div>
             </div>
 
             <div class="container">
-          <table class="table">
-              <tbody>
-                  <thead>
-                      <th><h2><strong>{{travel.destination}}</strong></h2></th>
-                  </thead>
-                  <tr>
-                      <td><b>Planed By:</b>  {{travel.creator.name}}</td>
-                  </tr>
-                  <tr>
-                       <td><b>Description:</b>  {{travel.description}}</td>
-                  </tr>
-                  <tr>
-                       <td><b>Travel Date From:</b>  {{travel.start}}</td>
-                  </tr>
-                  <tr>
-                        <td><b>Travel Date To:</b>  {{travel.end}}</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
 
-          <br>
-      <div class="container">
-          <h2><strong>User's Joining the Trip</strong></h2>
-              <ul class="list-group">{%for user in others%}
-                 <li class="list-group-item"> {{user.name}}</li>
-              {%endfor%}
-              </ul>
-          <br>
-            {%if travel.creator.id == user.id%}
-                <h5><a href="/travel/delete/{{travel.id}}">Delete</a></h5>
-            {%endif%}
-            <h5 style="text-align: right"><a href="/travel/logout" style="margin: 20px">Log out</a> | <a href="/travel/travel" style="margin: 20px">Home</a></h5>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <table class="table" style="margin-bottom:100px;">
+                            <thead>
+                                <th colspan="2"><h2><strong>{{travel.destination}}</strong></h2></th>
+                            </thead>
+                            <tr>
+                                <th scope="row"><b>Planed By:</b><td>  {{travel.creator.name}}</td> </th>
+                            </tr>
+                            <tr>
+                                <th scope="row"><b>Description:</b><td>  {{travel.description}}</td> </th>
+                            </tr>
+                            <tr>
+                                <th scope="row"><b>Travel Date From:</b><td>  {{travel.start}}</td> </th>
+                            </tr>
+                            <tr>
+                                    <th scope="row"><b>Travel Date To:</b> <td>{{travel.end}}</td> </th>
+                            </tr>
+                    </table>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h2><strong>User's Joining the Trip</strong></h2>
+                        <ul class="list-group">{%for user in others%}
+                            <li class="list-group-item"> {{user.name}}</li>
+                        {%endfor%}
+                        </ul>
+                    <br>
+                        {%if travel.creator.id == user.id%}
+                            <h5><a href="/travel/delete/{{travel.id}}">Delete</a></h5>
+                        {%endif%}
+
+                </div>
             </div>
 
     <!-- Footer -->

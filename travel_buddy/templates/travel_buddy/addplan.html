@@ -3,9 +3,16 @@
 {% block content %}
 
 {% load staticfiles %}
-       <h5><a href="/travel/travel" style="margin: 20px">Home</a></h5>
-        <h5 class="container">Hello, {{user.name}} </h5>
-        <div class="container row">
+<div class="col-lg-12 col-md-12 col-sm-12" style="background-color: #16a085">
+        <div class="container">
+              <div class="jumbotron text-white" style="background-color: #16a085; padding-left: 0px;">
+                      <h1 class="display-4">Travel Form</strong>!</h1>
+                      <p class="lead">Fill out the form to find out allies for a trip.</p>
+                      <h5 style="text-align: right;"><a href="/travel/travel" class="text-white">Home</a></h5>
+                    </div>
+        </div>
+</div>
+        <div class="container">
             {% if messages %}
                 <ul>
                 {% for message in messages %}
@@ -13,21 +20,39 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-            <div class="row">
-                <form action="/travel/createplan" class="col s12" method="POST">
-                    <div class="">
+        </div>
+            <div class="container">
+                <form action="/travel/createplan" method="POST">
+                    <div class="from-group">
                     {% csrf_token %}
-                    <!-- <label for="textarea1"></label> -->
-                    <textarea name="destination" class="materialize-textarea" placeholder="Destination"></textarea>
-                    <!-- <label for="textarea2">Description</label> -->
-                    <textarea name="description" class="materialize-textarea" placeholder="Description"></textarea>
-                    <label for="textarea3">Travel Date From</label>
-                    <input name="start" id="textarea3" type="date" class="materialize-textarea" placeholder="Travel Date From~">
-                    <label for="textare4">Travel Date To</label>
-                    <input name="end" id="textare4" type="date" class="materialize-textarea" placeholder="Travel Date To">
-                    <button type="submit" class="btn">Add</button>
+                    <label name="destination" class="materialize-textarea " placeholder="Destination">Destination</label>
+                    <input name="destination" class="materialize-textarea form-control" placeholder="Destination"></input>
                     </div>
+                    <div class="from-group">
+                    <label name="description" class="materialize-textarea" placeholder="Description">Description</label>
+                    <textarea name="description" class="materialize-textarea form-control" placeholder="Description" rows="3"></textarea>
+                    </div>
+                    <div class="from-group">
+                    <label for="textarea3">Travel Date From</label>
+                    <input name="start" id="textarea3" type="date" class="materialize-textarea form-control" placeholder="Travel Date From~">
+                    </div>
+                    <div class="from-group">
+                    <label for="textare4">Travel Date To</label>
+                    <input name="end" id="textare4" type="date" class="materialize-textarea form-control" placeholder="Travel Date To">
+                    </div><br>
+                    <button type="submit" class="waves-effect waves-light btn" style="margin-bottom:100px;">Add</button>
                 </form>
             </div>
+        <!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4" style="background-color:#16a085">
+  
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
+          <a href="https://mdbootstrap.com/education/bootstrap/" class="text-white"> Prawin Bagale Magar | Khem Jung Gurung</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
 
 {% endblock %}

@@ -181,6 +181,14 @@ header.masthead {
 	background-size: cover
 }
 
+.trek {
+	background-image: url(../img/trek.jpg)!important;
+}
+
+.login{
+	background-image: url(../img/login.jpg)!important;
+}
+
 header.masthead hr {
 	margin-top: 30px;
 	margin-bottom: 30px

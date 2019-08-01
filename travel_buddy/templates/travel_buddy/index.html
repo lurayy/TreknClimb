@@ -3,13 +3,14 @@
 {% block content %}
 
 {% load staticfiles %}
-<header class="masthead text-center text-white d-flex">
+<header class="masthead login text-center text-white d-flex">
     <div class="container my-auto">
       <div class="row">
         <div class="col-lg-6">
         </div>
         <div class="col-lg-4">
           <h2 class="text-uppercase">
+            
             <strong>View to Collabrate with others</strong>
           </h2>
           <hr>
@@ -36,7 +37,8 @@
                 </ul>
               {% endif %}
               
-            <form action="/travel/register" method="POST"> <div class="form-group"> 
+            <form action="/travel/register" method="POST">
+              <div class="form-group"> 
                 {% csrf_token %}
                     <label for="first_name">Name</label>
                   <input id="first_name" type="text" class="validate form-control" name="name">
