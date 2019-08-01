@@ -3,34 +3,42 @@
 {% block content %}
 
 {% load staticfiles %}
+<div class="col-lg-12 col-md-12 col-sm-12" style="background-color: #16a085">
+<div class="container">
+          <div class="jumbotron text-white" style="background-color: #16a085; padding-left: 0px;">
+                <h1 class="display-4">Welcome, <strong>{{user.name}}</strong>!</h1>
+                <p class="lead">You have sucessfully logged in, now you can find mates to have a trip together.</p>
+                {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            <h5 style="text-align: right;"><a href="/travel/logout" class="text-white">Logout</a></h5>
+        </div>
+
+    </div>
+</div>
 
 <div class="container">
-        <h5 style="text-align: right"><a href="/logout">Logout</a></h5>
-        <br>
-        <p>Successfully logged in! Welcome, <b>{{user.name}} !</b></p>
-        {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
-    </div>
-    <div class="container">
-        <h4>Your Trip Schedules</h4>
-        <table>
+        <h2><strong>Your Trip Schedules</strong></h2>
+        <table class="table">
             <thead>
-                <th>Desination</th>
-                <th>Travel Start Date</th>
-                <th>Travel End Date</th>
-                <th>Plan</th>
+                <tr>
+                <th scope="col">Desination</th>
+                <th scope="col">Travel Start Date</th>
+                <th scope="col">Travel End Date</th>
+                <th scope="col">Plan</th>
+            </tr>
             </thead>
             <tbody>
                 {%if travels%}
                     {%for travel in travels%}
                         {%if travel.creator.id == user.id%}
                 <tr>
-                    <td><a href="/show/{{travel.id}}">{{travel.destination}}</a></td>
+                    <td><a href="/travel/show/{{travel.id}}">{{travel.destination}}</a></td>
                     <td>{{travel.start}}</td>
                     <td>{{travel.end}}</td>
                     <td>{{travel.description}}</td>
@@ -39,7 +47,7 @@
                         {%for everyuser in travel.join.all%}
                             {%if everyuser.id == user.id%}
                 <tr>
-                    <td><a href="/show/{{travel.id}}">{{travel.destination}}</a></td>
+                    <td><a href="/travel/show/{{travel.id}}">{{travel.destination}}</a></td>
                     <td>{{travel.start}}</td>
                     <td>{{travel.end}}</td>
                     <td>{{travel.description}}</td>
@@ -53,28 +61,28 @@
     </div>
         <br>
     <div class="container">
-        <h4>Other User's Travel Plans</h4>
-        <table>
+        <h2><strong>Other User's Travel Plans</strong></h2>
+        <table class="table">
             <thead>
-                <th>Name</th>
-                <th>Destination</th>
-                <th>Travel Start Date</th>
-                <th>Travel End Date</th>
-                <th>Do You Want to Join?</th>
+                <th scope="col">Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Travel Start Date</th>
+                <th scope="col">Travel End Date</th>
+                <th scope="col">Do You Want to Join?</th>
             </thead>
             <tbody>
                 {%if travels%}
                     {%for travel in others%}
                 <tr>
                     <td>{{travel.creator.name}}</td>
-                    <td><a href="/show/{{travel.id}}">{{travel.destination}}</a></td>
+                    <td><a href="/travel/show/{{travel.id}}">{{travel.destination}}</a></td>
                     <td>{{travel.start}}</td>
                     <td>{{travel.end}}</td>
 
                         {%if user !=  travel.creator%}
-                    <form class="" action="/join/{{travel.id}}" method="POST">
+                    <form class="" action="/travel/join/{{travel.id}}" method="POST">
                          {% csrf_token %}
-                        <td><input type="Submit" name="join" value="Join"></td>
+                        <td><input type="Submit" name="join" value="Join" class="btn btn-info"></td>
                     </form>
                         {%endif%}
                 </tr>
@@ -83,6 +91,19 @@
             </tbody>
         </table>
         <br>
-        <h5 style="text-align: right"><a href="/addplan">Add Travel Plan</a></h5>
+        <h5 style="text-align: right"><a href="/travel/addplan" class="btn btn-info">Add Travel Plan</a></h5>
     </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4" style="background-color:#16a085">
+  
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
+          <a href="https://mdbootstrap.com/education/bootstrap/" class="text-white"> Prawin Bagale Magar | Khem Jung Gurung</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
 {% endblock %}

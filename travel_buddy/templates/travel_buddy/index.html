@@ -3,8 +3,31 @@
 {% block content %}
 
 {% load staticfiles %}
-        <div class="container">
-            <h2>Registration/Log in</h2>
+<header class="masthead text-center text-white d-flex">
+    <div class="container my-auto">
+      <div class="row">
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-4">
+          <h2 class="text-uppercase">
+            <strong>View to Collabrate with others</strong>
+          </h2>
+          <hr>
+        </div>
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-4">
+          <p class="text-faded mb-5">Join with others now</p>
+          <a class="btn btn-primary btn-l js-scroll-trigger" href="#signup">Register Now!</a>
+        </div>
+      </div>
+  </div>
+</header>
+
+        <div class="container" style="padding: 100px 0px 0px 0px;" id="signup">
+          <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-5">
+            <h3><strong>Registration & Log in</strong></h3>
             {% if messages %}
                 <ul class="messages">
                 {% for message in messages %}
@@ -12,50 +35,59 @@
                 {% endfor %}
                 </ul>
               {% endif %}
-            <form action="/register" class="col s12" method="POST">
+              
+            <form action="/travel/register" method="POST"> <div class="form-group"> 
                 {% csrf_token %}
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate" name="name">
-                  <label for="first_name">Name</label>
+                    <label for="first_name">Name</label>
+                  <input id="first_name" type="text" class="validate form-control" name="name">
                 </div>
+              
+              <div class="form-group">
+                    <label for="username">Username</label>
+                  <input id="username" type="text" class="validate form-control" name="username">
               </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="username" type="text" class="validate" name="username">
-                  <label for="username">Username</label>
-                </div>
+              <div class="form-group">
+                    <label for="password">Password</label>
+                  <input id="password" type="password" class="validate form-control" name="password">
               </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" name="password">
-                  <label for="password">Password</label>
-                </div>
+              <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                  <input id="password" type="password" class="validate form-control" name="confirm_password">
               </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" name="confirm_password">
-                  <label for="confirm_password">Confirm Password</label>
-                </div>
-              </div>
-              <input type="submit" value="Register" class="waves-effect waves-light btn">
+              <input type="submit" value="Register" class="waves-effect waves-light btn" style="margin-bottom:100px;">
             </form>
           </div>
-          <form class="container" action="/login" method="POST">
-             {% csrf_token %}
-              <h2>Login</h2>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="username" type="text" class="validate" name="username">
-                  <label for="username">Username</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" name="password">
-                  <label for="password">Password</label>
-                </div>
-              </div>
-              <input type="submit" value="Login" class="waves-effect waves-light btn">
-          </form>
+          <div class="col-lg-2 col-md-2 col-sm-2"></div>
+        
+        <div class="col-lg-5 col-md-5 col-sm-5">
+        <form class="container align-middle" action="/travel/login" method="POST"> <div class="form-group" style="padding: 0px 0px 100px 0px;"></div>
+          {% csrf_token %}
+           <h3><strong>Login</strong></h3>
+           <div class="form-group">
+                 <label for="username">Username</label>
+               <input id="username" type="text" class="validate form-control" name="username">
+           </div>
+           <div class="form-group">
+                 <label for="password">Password</label>
+               <input id="password" type="password" class="validate form-control" name="password">
+           </div>
+           <input type="submit" value="Login" class="waves-effect waves-light btn">
+       </form>
+
+      </div>
+    </div>
+        </div></div>
+          
+
+          <!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4" style="background-color:#16a085">
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" class="text-white"> Prawin Bagale Magar | Khem Jung Gurung</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
     {% endblock %} 

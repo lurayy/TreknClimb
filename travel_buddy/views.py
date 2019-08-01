@@ -10,39 +10,39 @@ def index(request):
 
 def register(request):
     if request.method == 'GET':
-        return redirect ('/')
+        return redirect ('/travel/')
     newuser = User.objects.validate(request.POST)
     print(newuser)
     if newuser[0] == False:
         for each in newuser[1]:
             messages.error(request, each) #for each error in the list, make a message for each one.
-        return redirect('/')
+        return redirect('/travel/')
     if newuser[0] == True:
         messages.success(request, 'Well done')
         request.session['id'] = newuser[1].id
-        return redirect('/travel')
+        return redirect('/travel/travel')
 
 def login(request):
     if 'id' in request.session:
-        return redirect('/travel')
+        return redirect('/travel/travel')
     if request.method == 'GET':
-        return redirect('/')
+        return redirect('/travel/')
     else:
         user = User.objects.login(request.POST)
         print(user)
         if user[0] == False:
             for each in user[1]:
                 messages.add_message(request, messages.INFO, each)
-            return redirect('/')
+            return redirect('/travel/')
         if user[0] == True:
             messages.add_message(request, messages.INFO,'Welcome, You are logged in!')
             request.session['id'] = user[1].id
-            return redirect('/travel')
+            return redirect('/travel/travel')
 
 
 def travel(request):
     if 'id' not in request.session:
-        return redirect ("/")
+        return redirect ("/travel/")
     context = {
         "user": User.objects.get(id=request.session['id']),
         "travels" : Travel.objects.all(),
@@ -53,7 +53,7 @@ def travel(request):
 
 def addplan(request):
     if 'id' not in request.session:
-        return redirect ("/")
+        return redirect ("/travel/")
     else:
         context= {
             "user":User.objects.get(id=request.session['id']),
@@ -62,21 +62,21 @@ def addplan(request):
 
 def createplan(request):
     if request.method != 'POST':
-        return redirect ("/addplan")
+        return redirect ("/travel/addplan")
     newplan= Travel.objects.travelval(request.POST, request.session["id"])
     if newplan[0] == True:
-        return redirect('/travel')
+        return redirect('/travel/travel')
     else:
         for message in newplan[1]:
             messages.error(request, message)
-        return redirect('/addplan')
+        return redirect('/travel/addplan')
 
 def show(request, travel_id):
     try:
         travel= Travel.objects.get(id=travel_id)
     except Travel.DoesNotExist:
         messages.info(request,"Travel Not Found")
-        return redirect('/travel')
+        return redirect('/travel/travel')
     context={
         "travel": travel,
         "user":User.objects.get(id=request.session['id']),
@@ -87,12 +87,12 @@ def show(request, travel_id):
 def join(request, travel_id):
     if request.method == "GET":
         messages.error(request,"What trip?")
-        return redirect('/')
+        return redirect('/travel/')
     joiner= Travel.objects.join(request.session["id"], travel_id)
     print (80 * ('*'), joiner)
     if 'errors' in joiner:
         messages.error(request, joiner['errors'])
-    return redirect('/travel')
+    return redirect('/travel/travel')
 
 #
 def delete(request, id):
@@ -100,15 +100,15 @@ def delete(request, id):
         target= Travel.objects.get(id=id)
     except Travel.DoesNotExist:
         messages.info(request,"Message Not Found")
-        return redirect('/travel')
+        return redirect('/travel/travel')
     target.delete()
-    return redirect('/travel')
+    return redirect('/travel/travel')
 #
 
 def logout(request):
     if 'id' not in request.session:
-        return redirect('/')
+        return redirect('/travel/')
     print("*******")
     print (request.session['id'])
     del (request.session['id'])
-    return redirect('/')
+    return redirect('/travel/')
