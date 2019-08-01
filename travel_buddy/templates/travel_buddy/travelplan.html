@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Travel Dash Board</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+<div class="container">
         <h5 style="text-align: right"><a href="/logout">Logout</a></h5>
         <br>
         <p>Successfully logged in! Welcome, <b>{{user.name}} !</b></p>
@@ -89,5 +85,4 @@
         <br>
         <h5 style="text-align: right"><a href="/addplan">Add Travel Plan</a></h5>
     </div>
-  </body>
-</html>
+{% endblock %}
