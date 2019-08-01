@@ -1,17 +1,87 @@
 {% extends "main/header.html" %}
 
 {% block content %}
-<div class="">
-    {% for trip_detail in data %}
+
+<header class="masthead text-center text-white d-flex">
+        <div class="container my-auto">
+          <div class="row">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-4">
+              <h2 class="text-uppercase">
+                <strong>Experience Nepal</strong>
+              </h2>
+              <hr>
+            </div>
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-4">
+              <p class="text-faded mb-5">Open skies and high himalayas are waiting for you</p>
+              <a class="btn btn-primary btn-l js-scroll-trigger" href="#register">Go Now</a>
+            </div>
+          </div>
+      </div>
+</header>
+
+<div class="container">
+<div style="padding: 50px 0px 50px 0px;">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                {% for trip_detail in data %}
+                <a class="nav-link" id="v-pills-{{trip_detail.id}}-tab" data-toggle="pill" href="#v-pills-{{trip_detail.id}}" role="tab" aria-controls="v-pills-{{trip_detail.id}}" aria-selected="false">{{trip_detail.title}}</a>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                {% for trip_detail in data %}
+                <div class="tab-pane fade" id="v-pills-{{trip_detail.id}}" role="tabpanel" aria-labelledby="v-pills-{{trip_detail.id}}-tab">{{ trip_detail.details }}</div>
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+</div>
+
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4" style="background-color:#16a085">
+
+    <!-- Footer Elements -->
+    <div class="container">
+  
+      <!-- Call to action -->
+      <ul class="list-unstyled list-inline text-center py-2 text-white">
+        <li class="list-inline-item text-white">
+          <h5 class="mb-1">Register for free</h5>
+        </li>
+        <li class="list-inline-item text-white">
+          <a href="#!" class="btn btn-outline-white btn-rounded text-white" >Sign up!</a>
+        </li>
+      </ul>
+      <!-- Call to action -->
+  
+    </div>
+    <!-- Footer Elements -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-white">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" class="text-white"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+
+
+    <!-- {% for trip_detail in data %}
         <h2 class="Jumbotron"><strong><u>Trip Title : {{trip_detail.title}}</u></strong></h2>
-        <div class="container alert alert-dark ">
         <u>Strating Point : </u> {{ trip_detail.starting_point }} <br>
         <u>End Point : </u> {{ trip_detail.ending_point }} <br>
         <u>Price : </u> {{ trip_detail.price }} <br>
         <u>Details : </u> {{ trip_detail.details }} <br>
-    </div>
         <hr>
-    {% endfor %}
 
-</div>
+    {% endfor %} -->
+
 {% endblock %}
