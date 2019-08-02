@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 import re
-import bcrypt
 from datetime import date, datetime
 from time import strptime
 Name_Regex = re.compile(r'^[A-Za-z ]+$')
@@ -22,7 +21,7 @@ class userManager(models.Manager):
             errors.append("Password needs to be more than 8 letters")
         if len(errors) == 0:
             #create the user
-            newuser = User.objects.create(name= postData['name'], username= postData['username'], password= bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt()))
+            newuser = User.objects.create(name= postData['name'], username= postData['username'], password= (postData['password']))
             return (True, newuser)
         else:
             return (False, errors)
@@ -38,8 +37,7 @@ class userManager(models.Manager):
                 errors.append("Sorry, please try logging in again")
                 return (False, errors)
         #password field/check
-        pw_match = bcrypt.hashpw(postData['password'].encode(), user.password.encode())
-        print (10*"3", user.password)
+        pw_match =(postData['password'])
         if pw_match == user.password:
             return (True, user)
         else:

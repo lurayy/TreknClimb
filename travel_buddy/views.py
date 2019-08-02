@@ -23,23 +23,20 @@ def register(request):
 
 def login_user(request):
     if 'id' in request.session:
-        return redirect('/travel/travel')
-    if request.method == "GET":
         return redirect('/travel')
+    if request.method == 'GET':
+        return redirect('/')
     else:
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                messages.add_message(request, messages.INFO,'')
-                request.session['id'] = user.id
-                return redirect('/travel/travel')
-        else:
-            messages.add_message(request, messages.INFO,"Invalid login")
-        return redirect('/travel/')
-
+        user = User.objects.login(request.POST)
+        print(user)
+        if user[0] == False:
+            for each in user[1]:
+                messages.add_message(request, messages.INFO, each)
+            return redirect('/')
+        if user[0] == True:
+            messages.add_message(request, messages.INFO,'Welcome, You are logged in!')
+            request.session['id'] = user[1].id
+            return redirect('/travel/travel')
 
 def travel(request):
     if 'id' not in request.session:
