@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db.models import Count
 from .models import User, Travel
 # Create your views here.
-
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     return render(request, 'travel_buddy/index.html')
@@ -12,7 +12,6 @@ def register(request):
     if request.method == 'GET':
         return redirect ('/travel/')
     newuser = User.objects.validate(request.POST)
-    print(newuser)
     if newuser[0] == False:
         for each in newuser[1]:
             messages.error(request, each) #for each error in the list, make a message for each one.
@@ -22,22 +21,24 @@ def register(request):
         request.session['id'] = newuser[1].id
         return redirect('/travel/travel')
 
-def login(request):
+def login_user(request):
     if 'id' in request.session:
         return redirect('/travel/travel')
-    if request.method == 'GET':
-        return redirect('/travel/')
+    if request.method == "GET":
+        return redirect('/travel')
     else:
-        user = User.objects.login(request.POST)
-        print(user)
-        if user[0] == False:
-            for each in user[1]:
-                messages.add_message(request, messages.INFO, each)
-            return redirect('/travel/')
-        if user[0] == True:
-            messages.add_message(request, messages.INFO,'Welcome, You are logged in!')
-            request.session['id'] = user[1].id
-            return redirect('/travel/travel')
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                messages.add_message(request, messages.INFO,'')
+                request.session['id'] = user.id
+                return redirect('/travel/travel')
+        else:
+            messages.add_message(request, messages.INFO,"Invalid login")
+        return redirect('/travel/')
 
 
 def travel(request):
@@ -89,7 +90,6 @@ def join(request, travel_id):
         messages.error(request,"What trip?")
         return redirect('/travel/')
     joiner= Travel.objects.join(request.session["id"], travel_id)
-    print (80 * ('*'), joiner)
     if 'errors' in joiner:
         messages.error(request, joiner['errors'])
     return redirect('/travel/travel')
@@ -105,10 +105,6 @@ def delete(request, id):
     return redirect('/travel/travel')
 #
 
-def logout(request):
-    if 'id' not in request.session:
-        return redirect('/travel/')
-    print("*******")
-    print (request.session['id'])
-    del (request.session['id'])
-    return redirect('/travel/')
+def logout_user(request):
+    logout(request)
+    return redirect('/')
