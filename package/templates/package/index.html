@@ -9,7 +9,7 @@
             </div>
             <div class="col-lg-4">
               <h2 class="text-uppercase">
-                <strong>Click on the trip for more Details</strong>
+                <strong>Choose your Adventure</strong>
               </h2>
               <hr>
             </div>
@@ -25,6 +25,12 @@
 
 <div class="container">
 <div style="padding: 100px 0px 100px 0px;" id="register">
+    <div class="jumbotron jumbotron-fluid text-white" style="background-color: #16a085; padding:30px 0px 20px 0px;">
+        <div class="container">
+          <h1 class="display-5"><strong>Our Trips</strong></h1>
+          <p class="lead">The details of the following are displayed on click.</p>
+        </div>
+      </div>
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -36,7 +42,16 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                 {% for trip_detail in data %}
-                <div class="tab-pane fade" id="v-pills-{{trip_detail.id}}" role="tabpanel" aria-labelledby="v-pills-{{trip_detail.id}}-tab">{{ trip_detail.details }}</div>
+                <div class="tab-pane fade" id="v-pills-{{trip_detail.id}}" role="tabpanel" aria-labelledby="v-pills-{{trip_detail.id}}-tab">
+                  <h1><strong>{{ trip_detail.title }}</strong></h1><br><br>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                  <p><strong>Strating Point</strong><br> {{ trip_detail.starting_point }}</p> <br>
+                    <p><strong>End Point</strong><br> {{ trip_detail.ending_point }}</p> <br>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                  <p><strong>Price</strong><br> Rs. {{ trip_detail.price }}</p> </div></div><br>{{ trip_detail.details }}
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -44,17 +59,6 @@
 </div>
 
 </div>
-<!-- Footer -->
-<footer class="page-footer font-small unique-color-dark pt-4" style="background-color:#16a085">
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" class="text-white"> Prawin Bagale Magar | Khem Jung Gurung</a>
-    </div>
-    <!-- Copyright -->
-  
-  </footer>
-  <!-- Footer -->
 
 
     <!-- {% for trip_detail in data %}
